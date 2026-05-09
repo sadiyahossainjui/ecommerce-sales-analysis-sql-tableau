@@ -1,0 +1,151 @@
+SELECT SUM(sales) AS total_sales
+FROM superstore;
+
+
+SELECT SUM(profit) AS total_profit
+FROM superstore;
+
+SELECT AVG(sales) AS average_sales
+FROM superstore;
+
+SELECT MAX(sales) AS highest_sale
+FROM superstore;
+
+SELECT MIN(profit) AS lowest_profit
+FROM superstore;
+
+
+SELECT category,
+SUM(sales) AS total_sales
+FROM superstore
+GROUP BY category;
+
+SELECT category,
+SUM(sales) AS total_sales
+FROM superstore
+GROUP BY category;
+
+SELECT region,
+SUM(profit) AS total_profit
+FROM superstore
+GROUP BY region;
+
+SELECT city,
+SUM(sales) AS total_sales
+FROM superstore
+GROUP BY city
+ORDER BY total_sales DESC
+LIMIT 5;
+
+
+SELECT segment,
+AVG(sales) AS avg_sales
+FROM superstore
+GROUP BY segment;
+
+SELECT sub_category,
+SUM(quantity) AS total_quantity
+FROM superstore
+GROUP BY sub_category
+ORDER BY total_quantity DESC;
+
+
+SELECT *
+FROM superstore
+WHERE category = 'Technology';
+
+SELECT AVG(sales)
+FROM `superstore`;
+
+SELECT SUM(quantity)
+FROM `superstore`;
+
+SELECT city, sales
+FROM superstore
+WHERE sales > 500;
+
+SELECT city, region, sales
+FROM superstore
+WHERE region = 'West';
+
+SELECT sub_category, sales, profit
+FROM superstore
+WHERE profit < 0;
+
+
+SELECT category, sales
+FROM superstore
+WHERE category = 'Furniture'
+AND sales > 500;
+
+
+SELECT city, region, sales
+FROM superstore
+WHERE region = 'West'
+OR region = 'East';
+
+
+SELECT COUNT(*) AS total_rows
+FROM superstore;
+
+SELECT COUNT(city) AS total_cities
+FROM superstore;
+
+SELECT DISTINCT city
+FROM superstore;
+
+SELECT COUNT(DISTINCT city) AS unique_cities
+FROM superstore;
+
+SELECT COUNT(DISTINCT category) AS unique_categories
+FROM superstore;
+
+
+SELECT COUNT(DISTINCT sub_category) AS unique_subcategories
+FROM superstore;
+
+SELECT DISTINCT region
+FROM superstore;
+
+
+SELECT sales,
+CASE
+    WHEN sales > 1000 THEN 'High Sales'
+    ELSE 'Low Sales'
+END AS sales_category
+FROM superstore;
+
+
+SELECT profit,
+CASE
+    WHEN profit < 0 THEN 'Loss'
+    ELSE 'Profit'
+END AS profit_status
+FROM superstore;
+
+
+SELECT sales,
+CASE
+    WHEN sales > 1000 THEN 'High'
+    WHEN sales > 500 THEN 'Medium'
+    ELSE 'Low'
+END AS sales_level
+FROM superstore;
+
+
+SELECT region,
+CASE
+    WHEN region = 'West' THEN 'Top Region'
+    ELSE 'Other Region'
+END AS region_group
+FROM superstore;
+
+
+SELECT
+CASE
+    WHEN sales > 1000 THEN 'High Sales'
+    ELSE 'Low Sales'
+END AS sales_category,
+COUNT(*) AS total_orders
+FROM superstore
+GROUP BY sales_category;
